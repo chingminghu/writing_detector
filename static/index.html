@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="從鍵盤輸入軌跡辨識數字" />
+    <title>鍵盤軌跡辨識</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="workspace">
+      <header class="brand">
+        <span class="brand-mark" aria-hidden="true">十</span>
+        <div><p class="eyebrow">Number Trace</p><h1>鍵盤軌跡辨識</h1></div>
+        <span class="status"><i></i>系統就緒</span>
+      </header>
+
+      <section class="dashboard">
+        <form id="predict-form" class="input-panel" aria-labelledby="form-title">
+          <div class="panel-heading">
+            <span class="index">01</span>
+            <div><p class="label">輸入軌跡</p><h2 id="form-title">描繪你想辨識的數字</h2></div>
+          </div>
+          <p class="hint">依照數字的筆畫方向，在鍵盤上依序滑過並輸入路徑。</p>
+          <div class="input-wrap">
+            <textarea id="text-input" name="text" maxlength="500" rows="5"
+              placeholder="在這裡輸入軌跡…" autocomplete="off" spellcheck="false" required></textarea>
+            <span id="count">0 / 500</span>
+          </div>
+          <button id="submit-button" type="submit">
+            <span>開始辨識</span><span class="arrow" aria-hidden="true">↗</span>
+          </button>
+          <p id="message" class="message" role="alert"></p>
+        </form>
+
+        <section id="result" class="result-panel" aria-live="polite">
+          <div class="panel-heading result-title">
+            <span class="index">02</span>
+            <div><p class="label">辨識結果</p><h2>最接近的數字</h2></div>
+          </div>
+          <div class="result-content">
+            <div class="prediction-wrap">
+              <span class="prediction-caption">預測</span>
+              <div id="prediction" class="prediction" aria-label="預測數字">—</div>
+            </div>
+            <div class="confidence">
+              <p>可能性分布</p>
+              <div id="probabilities" class="probabilities placeholder-bars" aria-label="數字可能性">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+          <p id="input-note" class="input-note">輸入軌跡後，結果會顯示在這裡。</p>
+        </section>
+      </section>
+
+      <footer><span>0—9 數字辨識</span></footer>
+    </main>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>

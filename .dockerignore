@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.git/
+.venv/
+venv/
+writing_data/
+digit_trainer.py
+cli_tester.py
