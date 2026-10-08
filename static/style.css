@@ -63,10 +63,49 @@ h2 { font-size: clamp(1.2rem, 2vw, 1.65rem); line-height: 1.25; }
 .index { flex: 0 0 auto; margin-top: 3px; color: var(--orange); font: 500 .72rem/1 ui-monospace, monospace; }
 .result-panel .label { color: #9fa398; }
 
-.hint { max-width: 28rem; margin: clamp(18px,3vh,34px) 0 14px; color: var(--muted); font-size: .86rem; line-height: 1.7; }
-.input-wrap { position: relative; flex: 1; min-height: 100px; }
+.hint { max-width: 28rem; margin: clamp(12px,2vh,22px) 0 10px; color: var(--muted); font-size: .8rem; line-height: 1.55; }
+.keyboard-block {
+  padding: 10px 12px 11px;
+  margin-bottom: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #e9e7df;
+}
+.keyboard-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font: .58rem ui-monospace, monospace;
+  letter-spacing: .06em;
+}
+.keyboard-heading span:last-child { display: flex; align-items: center; gap: 5px; }
+.keyboard-heading i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); border: 1px solid #799e25; }
+.keyboard { display: grid; gap: 4px; }
+.keyboard-row { display: flex; gap: 4px; }
+.keyboard-row:nth-child(2) { padding-left: 3%; }
+.keyboard-row:nth-child(3) { padding-left: 6%; padding-right: 3%; }
+.keyboard-row:nth-child(4) { padding-left: 10%; padding-right: 8%; }
+.key {
+  min-width: 0;
+  height: clamp(17px,2.6vh,23px);
+  flex: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid #c9c7be;
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  color: #767970;
+  background: #faf9f4;
+  font: 500 clamp(.48rem, .7vw, .63rem)/1 ui-monospace, monospace;
+  text-transform: uppercase;
+  transition: background 120ms, color 120ms, border-color 120ms, transform 120ms;
+}
+.key.pressed { color: var(--ink); border-color: #91b934; background: #d9f69b; }
+.key.latest { color: #101509; border-color: #668719; background: var(--green); transform: translateY(1px); box-shadow: 0 0 0 2px rgba(182,236,63,.25); }
+.input-wrap { position: relative; flex: 1; min-height: 70px; }
 textarea {
-  width: 100%; height: 100%; min-height: 100px; padding: 18px 18px 34px; resize: none;
+  width: 100%; height: 100%; min-height: 70px; padding: 13px 16px 28px; resize: none;
   border: 1px solid var(--line); border-radius: 12px; outline: none;
   color: var(--ink); background: #fff; font: 500 clamp(1rem,2vw,1.3rem)/1.55 ui-monospace, monospace;
   transition: border-color 160ms, box-shadow 160ms;
@@ -114,6 +153,12 @@ footer { display: flex; justify-content: space-between; color: var(--muted); fon
   .brand-mark { width: 36px; height: 36px; }
   .input-panel, .result-panel { padding: 22px 30px; }
   .hint { margin: 12px 0 8px; }
+  .keyboard-block { padding: 7px 10px 8px; margin-bottom: 7px; }
+  .keyboard-heading { margin-bottom: 4px; }
+  .keyboard { gap: 3px; }
+  .keyboard-row { gap: 3px; }
+  .key { height: 15px; }
+  .input-wrap, textarea { min-height: 52px; }
   button { padding: 10px 14px; }
   .prediction { font-size: clamp(6rem,14vw,9rem); }
 }

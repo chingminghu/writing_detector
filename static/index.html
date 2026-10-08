@@ -22,6 +22,13 @@
             <div><p class="label">輸入軌跡</p><h2 id="form-title">描繪你想辨識的數字</h2></div>
           </div>
           <p class="hint">依照數字的筆畫方向，在鍵盤上依序滑過並輸入路徑。</p>
+          <div class="keyboard-block">
+            <div class="keyboard-heading">
+              <span>按鍵軌跡</span>
+              <span><i></i>已輸入</span>
+            </div>
+            <div id="keyboard" class="keyboard" aria-hidden="true"></div>
+          </div>
           <div class="input-wrap">
             <textarea id="text-input" name="text" maxlength="500" rows="5"
               placeholder="在這裡輸入軌跡…" autocomplete="off" spellcheck="false" required></textarea>

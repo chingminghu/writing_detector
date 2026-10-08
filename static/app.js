@@ -7,10 +7,47 @@ const result = document.querySelector("#result");
 const prediction = document.querySelector("#prediction");
 const probabilities = document.querySelector("#probabilities");
 const inputNote = document.querySelector("#input-note");
+const keyboard = document.querySelector("#keyboard");
+
+const keyboardRows = [
+  "1234567890-=",
+  "qwertyuiop[]",
+  "asdfghjkl;'",
+  "zxcvbnm,./",
+];
+
+keyboardRows.forEach((characters) => {
+  const row = document.createElement("div");
+  row.className = "keyboard-row";
+  [...characters].forEach((character) => {
+    const key = document.createElement("span");
+    key.className = "key";
+    key.dataset.key = character;
+    key.textContent = character;
+    row.append(key);
+  });
+  keyboard.append(row);
+});
+
+const visualKeys = [...keyboard.querySelectorAll(".key")];
+
+function updateKeyboard(value) {
+  const validCharacters = [...value.toLowerCase()].filter((character) =>
+    keyboardRows.some((row) => row.includes(character)),
+  );
+  const pressed = new Set(validCharacters);
+  const latest = validCharacters.at(-1);
+
+  visualKeys.forEach((key) => {
+    key.classList.toggle("pressed", pressed.has(key.dataset.key));
+    key.classList.toggle("latest", key.dataset.key === latest);
+  });
+}
 
 input.addEventListener("input", () => {
   count.textContent = `${input.value.length} / 500`;
   message.textContent = "";
+  updateKeyboard(input.value);
 });
 
 form.addEventListener("submit", async (event) => {
